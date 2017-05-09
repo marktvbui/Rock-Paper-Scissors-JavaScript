@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+		<title>Rock Paper Scissors</title>
+	</head>
+	<body>
+
+			<h1 class="text-center"><strong>Rock Paper Scissors</strong></h1>
+		  <p>Press "r", "p" or "s" to start playing!</p>
+  		<div class id="results">
+  			<div class id="win">
+				</div>
+				<div class id="loss">
+				</div>
+				<div class id="tie">
+				</div>
+	  	</div>
+
+
+	<script type="text/javascript">
+		var wins = 0;
+    var losses = 0;
+    var ties = 0;
+    var letters = ["r", "p", "s"];
+    var winDiv = document.getElementById("win");
+    var lossDiv = document.getElementById("loss");
+    var tieDiv = document.getElementById("tie");
+		document.onkeyup = function(event) {
+			var userHand = event.key;
+			// random letter generator, but i'm allowing only r, p, and s to be part of the mix
+			var computerHand = letters[Math.floor(Math.random() * letters.length)];
+	    // these are the win/lost/tie conditions
+	  // debugger - pauses code to look and see
+	  if (userHand === computerHand) {
+		  	ties ++;
+		  	// console.log('tie was triggered ' + ties);
+	  	}
+	  	else if ((userHand == "r" && computerHand == "s") || (userHand == "p" && computerHand == "r") || (userHand == "s" && computerHand == "p")) {
+	  		wins ++;
+	  		// console.log('win was triggered ' + wins);
+	  	}
+	  	else if ((userHand == "r" && computerHand == "p") || (userHand == "p" && computerHand == "s") || (userHand == "s" && computerHand == "r")) {
+	  		losses ++;
+	  		// console.log('loss was triggered ' + losses);
+	  	}
+
+	  		winDiv.textContent = "Wins: " + wins;
+	  		lossDiv.textContent = "Losses: " + losses;
+	  		tieDiv.textContent = "Ties: " + ties;
+
+	  	// console.log("wins: " + wins);
+	  	// console.log("losses: " + losses);
+	  	// console.log("ties: " + ties);
+	  	alert("player plays: " + userHand + " vs " + "computer plays: " + computerHand);
+
+
+  		// showResults.textContent = "Wins: " + wins + lineBreak;
+  		// showResults.textContent += "Losses: " + losses;
+  		// showResults.textContent += "Ties: " + ties;
+	  	}
+
+
+	</script>
+	</body>
+</html>
